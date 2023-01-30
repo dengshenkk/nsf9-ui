@@ -6,7 +6,8 @@ import Button from "@/components/Button.vue";
 const dialogVisible = ref(false);
 const active = ref(1);
 function handleClick(mode) {
-    alert(mode + ' start failed.')
+  alert(mode + " start failed.");
+  dialogVisible.value = false;
 }
 function handleClose() {
   return false;
