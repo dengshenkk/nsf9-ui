@@ -4,7 +4,10 @@ import { ref } from "vue";
 import Button from "@/components/Button.vue";
 
 const dialogVisible = ref(false);
-
+const active = ref(1);
+function handleClick(mode) {
+    alert(mode + ' start failed.')
+}
 function handleClose() {
   return false;
 }
@@ -22,8 +25,8 @@ function handleClose() {
       <span>Select your transmission.</span>
       <template v-slot:footer>
         <div class="dialog-footer">
-          <Button @click="dialogVisible = false" active>Manual</Button>
-          <Button @click="dialogVisible = false">Auto</Button>
+          <Button @click="handleClick('Manual')">Manual</Button>
+          <Button @click="handleClick('Auto')">Auto</Button>
         </div>
       </template>
     </Dialog>

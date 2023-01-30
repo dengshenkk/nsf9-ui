@@ -1,9 +1,8 @@
 <template>
   <button
     :class="['nsf9-button', isOver && 'active']"
-    ref="button"
-    @mouseenter="isOver = true"
-    @mouseleave="isOver = false"
+    @mouseenter="handleMouse(true)"
+    @mouseleave="handleMouse(false)"
   >
     <slot></slot>
   </button>
@@ -20,18 +19,13 @@ export default {
     },
   },
   setup(props) {
-    const button = ref(null);
-    nextTick(() => {
-      watchEffect(() => {
-        if (props.active) {
-          button.value.focus();
-        }
-      });
-    });
     const isOver = ref(props.active);
+    function handleMouse(flag) {
+      isOver.value = flag;
+    }
     return {
       isOver,
-      button,
+      handleMouse,
     };
   },
 };
