@@ -18,7 +18,6 @@ function handleClose() {
 const button = ref(null);
 onMounted(() => {
   nextTick(() => {
-    console.log(`[button]: `, button);
     button.value.$el.focus();
   });
 });
