@@ -46,6 +46,10 @@ export default {
   & + .nsf9-button {
     margin-left: 24px;
   }
+
+  &:focus {
+    @extend .active;
+  }
 }
 
 @keyframes bink {
