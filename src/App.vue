@@ -5,6 +5,7 @@ import Button from "@/components/Button.vue";
 
 const dialogVisible = ref(false);
 const active = ref(1);
+const video = ref(null)
 function handleClick(mode) {
   setTimeout(() => {
     alert(mode + " start failed.");
@@ -21,6 +22,9 @@ onMounted(() => {
     button.value.$el.focus();
   });
 });
+document.addEventListener('click', () => {
+  video.value.muted = false
+})
 </script>
 
 <template>
@@ -30,6 +34,7 @@ onMounted(() => {
       muted
       playsinline
       src="./assets/video/nfs9.mp4"
+      ref="video"
       loop
     ></video>
     <div class="start">
