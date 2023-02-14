@@ -16,7 +16,18 @@ function handleClose() {
   return false;
 }
 
+function handleClickStart(e) {
+  dialogVisible.value = true
+  requestFullScreen()
+}
+function requestFullScreen() {
+  if (document.fullscreenElement) {
+    return
+  }
+  container.value.requestFullscreen()
+}
 const button = ref(null);
+const container = ref(null);
 onMounted(() => {
   nextTick(() => {
     button.value.$el.focus();
@@ -24,11 +35,12 @@ onMounted(() => {
 });
 document.addEventListener('click', () => {
   video.value.muted = false
+  requestFullScreen()
 })
 </script>
 
 <template>
-  <div class="demo">
+  <div class="demo" ref="container">
     <video
       autoplay
       muted
@@ -38,7 +50,7 @@ document.addEventListener('click', () => {
       loop
     ></video>
     <div class="start">
-      <Button ref="button" active @click="dialogVisible = true">Start</Button>
+      <Button ref="button" active @click="handleClickStart">Start</Button>
     </div>
 
     <Dialog
